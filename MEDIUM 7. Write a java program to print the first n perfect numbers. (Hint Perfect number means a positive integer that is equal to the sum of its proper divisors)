@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class PerfectNumberGenerator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        int count = 0;
+        int number = 1;
+
+        System.out.println("First " + n + " perfect numbers:");
+
+        while (count < n) {
+            if (isPerfectNumber(number)) {
+                System.out.println(number);
+                count++;
+            }
+            number++;
+        }
+
+        scanner.close();
+    }
+
+    private static boolean isPerfectNumber(int num) {
+        int sum = 1; // 1 is always a divisor
+
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                sum += i;
+                if (i != num / i) {
+                    sum += num / i;
+                }
+            }
+        }
+
+        return sum == num;
+    }
+}
