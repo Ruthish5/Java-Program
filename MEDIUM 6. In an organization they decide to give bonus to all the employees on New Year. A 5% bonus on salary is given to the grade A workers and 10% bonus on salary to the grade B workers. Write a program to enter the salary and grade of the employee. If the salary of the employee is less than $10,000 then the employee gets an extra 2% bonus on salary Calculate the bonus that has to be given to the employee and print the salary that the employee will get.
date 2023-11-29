@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class EmployeeBonusCal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the salary of the employee: $");
+        double salary = scanner.nextDouble();
+
+        System.out.print("Enter the grade of the employee (A or B): ");
+        char grade = scanner.next().charAt(0);
+
+        double bonus = calculateBonus(salary, grade);
+        double totalSalary = salary + bonus;
+
+        System.out.println("Bonus: $" + bonus);
+        System.out.println("Total salary after bonus: $" + totalSalary);
+
+        scanner.close();
+    }
+
+    private static double calculateBonus(double salary, char grade) {
+        double bonusPercentage;
+
+        if (salary < 10000) {
+            bonusPercentage = 0.07; // 5% + 2% for salary less than $10,000
+        } else {
+            bonusPercentage = (grade == 'A') ? 0.05 : 0.10;
+        }
+
+        return salary * bonusPercentage;
+    }
+}
