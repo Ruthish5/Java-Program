@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class ATMTotalAmount {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] denominations = { 2000, 500, 200, 100 };
+
+        System.out.println("Enter the number of notes for each denomination:");
+
+        int totalAmount = 0;
+
+        for (int denomination : denominations) {
+            System.out.print("Number of " + denomination + " notes: ");
+            int numberOfNotes = scanner.nextInt();
+
+            totalAmount += denomination * numberOfNotes;
+        }
+
+        System.out.println("Total amount available in the ATM machine: " + totalAmount);
+
+        scanner.close();
+    }
+}
